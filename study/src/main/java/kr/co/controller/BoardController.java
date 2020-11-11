@@ -4,6 +4,7 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -19,13 +20,13 @@ public class BoardController {
 	@Inject
 	BoardService service;
 	
-	//°Ô½ÃÆÇ ±Û ÀÛ¼º È­¸é
+	//ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Û¼ï¿½ È­ï¿½ï¿½
 	@RequestMapping(value = "/board/writeView", method = RequestMethod.GET)
 	public void writeView() throws Exception {
 		logger.info("writeView");
 	}
 	
-	//°Ô½ÃÆÇ ±Û ÀÛ¼º
+	//ê²Œì‹œê¸€ ì‘ì„±
 	@RequestMapping(value = "/board/write", method = RequestMethod.POST)
 	public String write(BoardVO boardVO) throws Exception{
 		logger.info("write");
@@ -33,5 +34,14 @@ public class BoardController {
 		service.write(boardVO);
 		
 		return "redirect:/";
+	}
+	
+	//ê²Œì‹œíŒ ëª©ë¡ ì¡°íšŒ
+	@RequestMapping(value="/list", method = RequestMethod.GET)
+	public String list(Model model) throws Exception{
+		logger.info("list");
+		
+		model.addAttribute("list",service.list());
+		return "board/list";
 	}
 }
