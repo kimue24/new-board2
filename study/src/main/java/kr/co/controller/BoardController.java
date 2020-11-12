@@ -20,7 +20,7 @@ public class BoardController {
 	@Inject
 	BoardService service;
 	
-	//�Խ��� �� �ۼ� ȭ��
+	//
 	@RequestMapping(value = "/board/writeView", method = RequestMethod.GET)
 	public void writeView() throws Exception {
 		logger.info("writeView");
@@ -43,5 +43,15 @@ public class BoardController {
 		
 		model.addAttribute("list",service.list());
 		return "board/list";
+	}
+	//게시판 조회
+	@RequestMapping(value = "/readView", method = RequestMethod.GET)
+	public String read(BoardVO boardVO, Model model) throws Exception {
+		logger.info("read");
+		
+		model.addAttribute("read", service.read(boardVO.getBno()));
+		
+		return "board/readView";
+		
 	}
 }

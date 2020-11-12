@@ -16,14 +16,26 @@
 		,#{writer} )
 
 	</insert>
-
+<!--  게시글 리스트 불러오기 -->
 	<select id="list" resultType="kr.co.vo.BoardVO">
-		SELECT   BNO
-			   , TITLE
-			   , WRITER
-			   , REGDATE
-		  FROM MP_BOARD
-		  ORDER BY BNO DESC
+		SELECT BNO
+		, TITLE
+		, WRITER
+		, REGDATE
+		FROM MP_BOARD
+		ORDER BY BNO DESC
+	</select>
+
+	<!-- 게시글 클릭시 게시물 조회하기 -->
+	<select id="read" parameterType="int"
+		resultType="kr.co.vo.BoardVO">
+		SELECT BNO
+		,TITLE
+		,CONTENT
+		,WRITER
+		,REGDATE
+		FROM MP_BOARD
+		WHERE BNO = #{bno}
 	</select>
 	   	
 </mapper>
