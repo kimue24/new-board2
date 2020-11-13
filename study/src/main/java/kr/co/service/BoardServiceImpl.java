@@ -32,4 +32,14 @@ public class BoardServiceImpl implements BoardService {
 	public BoardVO read(int bno) throws Exception {
 		return dao.read(bno);
 	}
+	//게시물 수정
+	public void update(BoardVO boardVO) throws Exception{
+		dao.update(boardVO);
+	}
+	
+	//게시물 삭제
+	public void delete(int bno) throws Exception {
+		dao.delete(bno);
+		
+	}
 }
