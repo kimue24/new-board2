@@ -81,6 +81,7 @@ public class BoardController {
 		logger.info("delete");
 		
 		service.delete(boardVO.getBno());
+		
 		 
 		return "redirect:/board/list";
 		

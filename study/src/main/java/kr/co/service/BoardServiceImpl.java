@@ -41,5 +41,6 @@ public class BoardServiceImpl implements BoardService {
 	public void delete(int bno) throws Exception {
 		dao.delete(bno);
 		
+		
 	}
 }
