@@ -16,13 +16,24 @@
 		,#{writer} )
 
 	</insert>
-<!--  게시글 리스트 불러오기 -->
-	<select id="list" resultType="kr.co.vo.BoardVO">
-		SELECT BNO
-		, TITLE
-		, WRITER
-		, REGDATE
+	<!-- 게시글 리스트 불러오기 -->
+	<select id="listPage" resultType="kr.co.vo.BoardVO"
+		parameterType="kr.co.vo.Criteria">
+		SELECT BNO.
+		TITLE,
+		CONTENT,
+		WRITER,
+		REGDATE
+		FROM(
+		SELECT BNO,
+		TITLE,
+		CONTENT,
+		WRITER,
+		REGDATE,
+		ROW_NUMBER() OVER(ORDER BY BNO DESC) AS RNUM
 		FROM MP_BOARD
+		) MP
+		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
 		ORDER BY BNO DESC
 	</select>
 
@@ -35,7 +46,8 @@
 		,WRITER
 		,REGDATE
 		FROM MP_BOARD
-		WHERE BNO = #{bno}
+		WHERE
+		BNO = #{bno}
 	</select>
 	
     <update id="update" parameterType="kr.co.vo.BoardVO">
