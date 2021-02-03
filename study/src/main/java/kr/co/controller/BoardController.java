@@ -32,12 +32,13 @@ public class BoardController {
 	
 	// 게시판 글 작성
 	@RequestMapping(value = "/board/write", method = RequestMethod.POST)
-	public String write(BoardVO boardVO) throws Exception{
+	public String write(BoardVO boardVO, Model model) throws Exception{
 		logger.info("write");
 		
 		service.write(boardVO);
 		
-		return "redirect:/";
+		model.addAttribute("list",service.list());
+		return "board/list";
 	}
 	
 	// 게시판 목록 조회
