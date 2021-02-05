@@ -4,17 +4,35 @@
 <html>
 	<head>
 		<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-	 	<title>게시판</title>
-	</head>
-	<script type="text/javascript">
+	 		<script type="text/javascript">
 		$(document).ready(function(){
+			var formObj = $("form[name='updateForm']");
 			
 			$(".cancel_btn").on("click", function(){
 				event.preventDefault();
 				location.href = "/board/list";
 			})
+			
+			$(".update_btn").on("click", function(){
+				if(fn_valiChk()){
+					return false;
+				}
+				formObj.attr("action", "/board/update");
+				formObj.attr("method", "post");
+				formObj.submit();
+			})
 		})
-	
+			
+		function fn_valiChk(){
+			var updateForm = $("form[name='updateForm'] .chk").length;
+			for(var i = 0; i<updateForm; i++){
+				if($(".chk").eq(i).val() == "" || $(".chk").eq(i).val() == null){
+					alert($(".chk").eq(i).attr("title"));
+					return true;
+				}
+			}
+		}
+		
 	</script>
 	<body>
 	
@@ -28,6 +46,9 @@
 			  홈 - 글 작성
 			</nav>
 			<hr />
+			<div>
+				<%@include file="nav.jsp" %>
+			</div>
 			
 			<section id="container">
 				<form name="updateForm" role="form" method="post" action="/board/update">

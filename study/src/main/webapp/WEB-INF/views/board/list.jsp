@@ -5,11 +5,6 @@
 	<head>
 	 	<title>게시판</title>
 	 	
-	 	<script type="text/javascript"> 
-	 	function goPage() 
-	 	{ location.href="/board/writeView/"; } 
-	 	</script>
-	 	
 	</head>
 	<body>
 		<div id="root">
@@ -17,6 +12,10 @@
 				<h1> 게시판</h1>
 			</header>
 			<hr />
+			
+			<div>
+			<%@include file ="nav.jsp" %>
+			</div>
 			 
 			<nav>
 			 <a href="javascript:goPage()" > 홈 - 글 작성</a> <br />
