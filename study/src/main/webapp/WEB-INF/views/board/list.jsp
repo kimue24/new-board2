@@ -13,13 +13,11 @@
 			</header>
 			<hr />
 			
-			<div>
-			<%@include file ="nav.jsp" %>
-			</div>
-			 
-			<nav>
-			 <a href="javascript:goPage()" > 홈 - 글 작성</a> <br />
-			</nav>
+<div>
+<%@include file="nav.jsp"%>
+
+</div>
+
 			<hr />
 			
 			<section id="container">

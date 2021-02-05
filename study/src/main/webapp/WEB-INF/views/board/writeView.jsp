@@ -5,6 +5,7 @@
 	 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 	 	<title>게시판</title>
 	</head>
+	
 		<script type="text/javascript">
 		$(document).ready(function(){
 			var formObj = $("form[name='writeForm']");
@@ -40,7 +41,7 @@
 			</div>
 			
 			<section id="container">
-				<form role="writeForm" method="post" action="/board/write">
+				<form role="writeForm" name = "writeForm" method="post" action="/board/write">
 					<table>
 						<tbody>
 							<tr>
@@ -59,7 +60,7 @@
 								</td>
 							<tr>
 								<td>						
-									<button type="submit" class="write_btn">확인</button>
+									<button type="button" class="write_btn">작성</button>
 								</td>
 							</tr>			
 						</tbody>			
@@ -67,6 +68,5 @@
 				</form>
 			</section>
 			<hr />
-		</div>
 	</body>
 </html>

@@ -3,10 +3,15 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 	<head>
-		<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	 	<title>게시판</title>
 	</head>
 	
+	<div>
+<%@include file="nav.jsp"%>
+
+</div>
+
 	<script type="text/javascript">
 		$(document).ready(function(){
 			var formObj = $("form[name='readForm']");
@@ -22,11 +27,12 @@
 			$(".delete_btn").on("click", function(){
 				var deleteYN = confirm("삭제하시겠습니까?");
 				
-				if(deleteYN) == true) {
+				if(deleteYN == true) {
+
 				formObj.attr("action", "/board/delete");
 				formObj.attr("method", "post");
 				formObj.submit();
-			}
+				}
 			})
 			
 			// 취소
@@ -49,10 +55,6 @@
 			  홈 - 글 작성
 			</nav>
 			<hr />
-			
-			<div>
-				<%@include file="nav.jsp" %>
-			</div>
 			
 			<section id="container">
 				<form name="readForm" role="form" method="post">

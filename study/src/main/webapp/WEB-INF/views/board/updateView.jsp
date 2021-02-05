@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-	 		<script type="text/javascript">
+	<script type="text/javascript">
 		$(document).ready(function(){
 			var formObj = $("form[name='updateForm']");
 			
@@ -46,9 +46,10 @@
 			  홈 - 글 작성
 			</nav>
 			<hr />
-			<div>
-				<%@include file="nav.jsp" %>
-			</div>
+<div>
+<%@include file="nav.jsp"%>
+
+</div>
 			
 			<section id="container">
 				<form name="updateForm" role="form" method="post" action="/board/update">
@@ -57,12 +58,12 @@
 						<tbody>
 							<tr>
 								<td>
-									<label for="title">제목</label><input type="text" id="title" name="title" value="${update.title}"/>
+									<label for="title">제목</label><input type="text" id="title" name="title" value="${update.title}" class="chk" title="제목을 입력하세요."/>
 								</td>
 							</tr>	
 							<tr>
 								<td>
-									<label for="content">내용</label><textarea id="content" name="content"><c:out value="${update.content}" /></textarea>
+									<label for="content">내용</label><textarea id="content" name="content" class="chk" title="내용을 입력하세요."><c:out value="${update.content}" /></textarea>
 								</td>
 							</tr>
 							<tr>
