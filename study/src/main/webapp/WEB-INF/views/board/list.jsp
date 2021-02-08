@@ -11,6 +11,12 @@ li {
 	padding: 6px;
 }
 </style>
+
+<script>
+	function alertDialogBox() {
+		alert("확인을 눌러야 다른 작업 가능!")
+	}
+</script>
 <title>게시판</title>
 
 </head>
@@ -71,5 +77,12 @@ li {
 		</section>
 		<hr />
 	</div>
+
+<script>
+
+    console.log(4 * 5);
+
+</script>
+	
 </body>
 </html>
