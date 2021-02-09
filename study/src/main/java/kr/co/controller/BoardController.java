@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -14,6 +15,7 @@ import kr.co.service.BoardService;
 import kr.co.vo.BoardVO;
 import kr.co.vo.Criteria;
 import kr.co.vo.PageMaker;
+import kr.co.vo.SearchCriteria;
 
 @Repository
 @Controller
@@ -34,14 +36,14 @@ public class BoardController {
 	
 	// 게시판 글 작성
 	@RequestMapping(value = "/board/write", method = RequestMethod.POST)
-	public String write(BoardVO boardVO, Criteria cri, Model model) throws Exception{
+	public String write(BoardVO boardVO, SearchCriteria scri, Model model) throws Exception{
 		logger.info("write");
 		service.write(boardVO);
-		model.addAttribute("list", service.list(cri));
+		model.addAttribute("list", service.list(scri));
 		
 		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(service.listCount());
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(service.listCount(scri));
 		
 		model.addAttribute("pageMaker", pageMaker);
 		
@@ -50,14 +52,14 @@ public class BoardController {
 	
 	// 게시판 목록 조회
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(Model model, Criteria cri) throws Exception{
+	public String list(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception{
 		logger.info("list");
 		
-		model.addAttribute("list", service.list(cri));
+		model.addAttribute("list", service.list(scri));
 		
 		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(service.listCount());
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(service.listCount(scri));
 		
 		model.addAttribute("pageMaker", pageMaker);
 		
