@@ -22,14 +22,23 @@
 
     </select>
     
-    <!-- 회원정보 수정 -->
-    <update id="memberUpdate">
-    	UPDATE MP_MEMBERSET
-    	USERPASS = #{userPass},
-    	USERNAME = #{userName}
-    	WHERE USERID = #{userId}
- 
-    </update>
+<!-- 회원정보 수정 -->
+	<update id="memberUpdate">
+		UPDATE MP_MEMBER SET 
+		USERPASS = #{userPass},
+		USERNAME = #{userName}
+		WHERE USERID = #{userId}
+	</update>
+	
+	<!-- 회원탈퇴 -->
+	
+	<delete id="memberDelete">
+			DELETE FROM MP_MEMBER
+			WHERE USERID = #{userId}
+			AND USERPASS = #{userPass}
+	</delete>
+	
+	
     
     
    
