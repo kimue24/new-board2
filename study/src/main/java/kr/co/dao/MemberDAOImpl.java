@@ -39,4 +39,18 @@ public class MemberDAOImpl implements MemberDAO {
 		// #{userId}, #{userPass}에 파라미터값이 매칭이 되겠지요.
 		sql.delete("memberMapper.memberDelete", vo);
 	}
+	
+	//비밀번호 체크
+	@Override
+	public int passChk(MemberVO vo) throws Exception {
+		int result = sql.selectOne("memberMapper.passChk", vo);
+		return result;
+	}
+	
+	// 아이디 중복체크
+	public int idChk(MemberVO vo) throws Exception {
+		int result = sql.selectOne("memberMapper.idChk", vo);
+				return result;
+	}
+
 }
