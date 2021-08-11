@@ -42,6 +42,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/awa/Downloads/ojdbc6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/awa/Downloads/ojdbc6_g.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/ojdbc6.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
